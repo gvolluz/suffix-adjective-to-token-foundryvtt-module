@@ -1,0 +1,33 @@
+{
+  "id": "suffix-adjective-to-token",
+  "title": "Suffix Adjective To Token",
+  "description": "Adds a Prototype Token option to move Foundry's random adjective from the front of a new token name to the end.",
+  "version": "0.1.0",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "13"
+  },
+  "authors": [
+    {
+      "name": "OpenAI Codex"
+    }
+  ],
+  "esmodules": [
+    "scripts/module.mjs"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "fr",
+      "name": "Francais",
+      "path": "lang/fr.json"
+    }
+  ],
+  "url": "",
+  "manifest": "",
+  "download": ""
+}

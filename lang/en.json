@@ -1,0 +1,5 @@
+{
+  "suffix-adjective-to-token.label": "Suffix random adjective",
+  "suffix-adjective-to-token.hintPrototype": "When enabled, newly placed tokens move Foundry's random adjective to the end of the name. Requires the core adjective option.",
+  "suffix-adjective-to-token.hintPlaced": "This flag is stored on the token, but it only affects newly created tokens that also use Foundry's core adjective option."
+}

@@ -1,0 +1,5 @@
+{
+  "suffix-adjective-to-token.label": "Suffixer l'adjectif aleatoire",
+  "suffix-adjective-to-token.hintPrototype": "Quand cette option est active, les nouveaux jetons places deplacent l'adjectif aleatoire de Foundry a la fin du nom. L'option de base de Foundry doit aussi etre activee.",
+  "suffix-adjective-to-token.hintPlaced": "Ce drapeau est stocke sur le jeton, mais il n'affecte que les nouveaux jetons crees qui utilisent aussi l'option d'adjectif de Foundry."
+}
