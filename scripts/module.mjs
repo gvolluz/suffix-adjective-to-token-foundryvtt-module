@@ -1,33 +1,42 @@
 const MODULE_ID = "suffix-adjective-to-token";
 const COUNT_SUFFIX_PATTERN = "(?:\\(\\d+\\)|#\\d+|\\d+)";
 
-Hooks.once("init", () => {
-  console.log(`${MODULE_ID} | Initializing`);
+Hooks.on("preCreateDocument", (document, data, options, userId) => {
+  if (document?.documentName !== "Token") return;
+  applyRename(document);
+});
+
+Hooks.on("createDocument", (document, options, userId) => {
+  if (document?.documentName !== "Token") return;
+  void applyRename(document, { persisted: true });
 });
 
 Hooks.on("preCreateToken", (tokenDocument, data, options, userId) => {
-  if (userId !== game.user?.id) return;
+  applyRename(tokenDocument);
+});
+
+Hooks.on("createToken", (tokenDocument, options, userId) => {
+  void applyRename(tokenDocument, { persisted: true });
+});
+
+function applyRename(tokenDocument, { persisted = false } = {}) {
+  if (!tokenDocument) return;
+  if (persisted && tokenDocument.parent?.isView !== true) return;
 
   const renamed = getSuffixedName(tokenDocument);
   if (!renamed || renamed === tokenDocument.name) return;
 
+  if (persisted) return tokenDocument.update({ name: renamed });
   tokenDocument.updateSource({ name: renamed });
-});
-
-Hooks.on("createToken", async (tokenDocument, options, userId) => {
-  if (userId !== game.user?.id) return;
-
-  const renamed = getSuffixedName(tokenDocument);
-  if (!renamed || renamed === tokenDocument.name) return;
-
-  await tokenDocument.update({ name: renamed });
-});
+}
 
 function getSuffixedName(tokenDocument) {
-  if (!tokenDocument?.prependAdjective) return null;
+  const prependAdjective = tokenDocument?.actor?.prototypeToken?.prependAdjective;
+  if (!prependAdjective) return null;
   if (typeof tokenDocument.name !== "string") return null;
 
   const actorName = tokenDocument.actor?.name;
+  if (isAlreadySuffixed(tokenDocument.name, actorName)) return null;
   return reorderAroundActorName(tokenDocument.name, actorName) ?? moveFirstWordToEnd(tokenDocument.name);
 }
 
@@ -61,6 +70,17 @@ function moveFirstWordToEnd(currentName) {
   if (!adjective || !remainder) return null;
 
   return [remainder, adjective, countSuffix].filter(Boolean).join(" ");
+}
+
+function isAlreadySuffixed(currentName, actorName) {
+  if (typeof currentName !== "string" || typeof actorName !== "string") return false;
+
+  const cleanCurrent = currentName.trim();
+  const cleanActor = actorName.trim();
+  if (!cleanCurrent || !cleanActor || cleanCurrent === cleanActor) return false;
+
+  const pattern = new RegExp(`^${escapeRegExp(cleanActor)}(?:\\s+(${COUNT_SUFFIX_PATTERN}))?(?:\\s+.+)$`);
+  return pattern.test(cleanCurrent);
 }
 
 function escapeRegExp(value) {

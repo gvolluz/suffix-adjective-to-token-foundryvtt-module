@@ -2,7 +2,7 @@
   "id": "suffix-adjective-to-token",
   "title": "Suffix Adjective To Token",
   "description": "Adds a Prototype Token option to move Foundry's random adjective from the front of a new token name to the end.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "compatibility": {
     "minimum": "11",
     "verified": "13"
@@ -27,7 +27,7 @@
       "path": "lang/fr.json"
     }
   ],
-  "url": "",
-  "manifest": "",
+  "url": "https://github.com/gvolluz/suffix-adjective-to-token-foundryvtt-module",
+  "manifest": "https://github.com/gvolluz/suffix-adjective-to-token-foundryvtt-module/blob/main/module.json",
   "download": ""
 }
