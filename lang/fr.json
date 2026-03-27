@@ -1,5 +1,25 @@
 {
   "suffix-adjective-to-token.label": "Suffixer l'adjectif aleatoire",
   "suffix-adjective-to-token.hintPrototype": "Quand cette option est active, les nouveaux jetons places deplacent l'adjectif aleatoire de Foundry a la fin du nom. L'option de base de Foundry doit aussi etre activee.",
-  "suffix-adjective-to-token.hintPlaced": "Ce drapeau est stocke sur le jeton, mais il n'affecte que les nouveaux jetons crees qui utilisent aussi l'option d'adjectif de Foundry."
+  "suffix-adjective-to-token.hintPlaced": "Ce drapeau est stocke sur le jeton, mais il n'affecte que les nouveaux jetons crees qui utilisent aussi l'option d'adjectif de Foundry.",
+  "TOKEN.Adjectives.onearmed": "Manchot",
+  "TOKEN.Adjectives.onelegged": "Unijambiste",
+  "TOKEN.Adjectives.twisted": "Tordu",
+  "TOKEN.Adjectives.oneeyed": "Borgne",
+  "TOKEN.Adjectives.crosseyed": "Bigleux",
+  "TOKEN.Adjectives.scarred": "Balafré",
+  "TOKEN.Adjectives.stitched": "Recousu",
+  "TOKEN.Adjectives.limping": "Boiteux",
+  "TOKEN.Adjectives.hunched": "Vouté",
+  "TOKEN.Adjectives.scrawny": "Rachitique",
+  "TOKEN.Adjectives.puny": "Malingre",
+  "TOKEN.Adjectives.mutilated": "Mutilé",
+  "TOKEN.Adjectives.gaunt": "Décharné",
+  "TOKEN.Adjectives.hunchbacked": "Bossu",
+  "TOKEN.Adjectives.toothless": "Edenté",
+  "TOKEN.Adjectives.bald": "Chauve",
+  "TOKEN.Adjectives.shaggy": "Hirsute",
+  "TOKEN.Adjectives.tattooed": "Tatoué",
+  "TOKEN.Adjectives.pockmarked": "Pustuleux",
+  "TOKEN.Adjectives.bowlegged": "Cagneux"
 }

@@ -55,7 +55,7 @@ function reorderAroundActorName(currentName, actorName) {
   const countSuffix = match[2]?.trim();
   if (!adjective) return null;
 
-  return [cleanActor, adjective, countSuffix].filter(Boolean).join(" ");
+  return [cleanActor, lowercaseFirstLetter(adjective), countSuffix].filter(Boolean).join(" ");
 }
 
 function moveFirstWordToEnd(currentName) {
@@ -69,7 +69,7 @@ function moveFirstWordToEnd(currentName) {
   const countSuffix = match[3]?.trim();
   if (!adjective || !remainder) return null;
 
-  return [remainder, adjective, countSuffix].filter(Boolean).join(" ");
+  return [remainder, lowercaseFirstLetter(adjective), countSuffix].filter(Boolean).join(" ");
 }
 
 function isAlreadySuffixed(currentName, actorName) {
@@ -85,4 +85,9 @@ function isAlreadySuffixed(currentName, actorName) {
 
 function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function lowercaseFirstLetter(value) {
+  if (typeof value !== "string" || value.length === 0) return value;
+  return `${value.charAt(0).toLowerCase()}${value.slice(1)}`;
 }

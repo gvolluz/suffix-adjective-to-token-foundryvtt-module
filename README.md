@@ -2,6 +2,8 @@
 
 This Foundry VTT module automatically watches token creation and moves Foundry's random adjective from the front of the token name to the end.
 
+It also contributes additional physical adjectives to the global `TOKEN.Adjectives.*` translation pool, allowing Foundry to generate more descriptive token names without editing `fr-core`.
+
 Example:
 - Foundry-generated name: `Fatigue Blinker`
 - After this module runs: `Blinker Fatigue`

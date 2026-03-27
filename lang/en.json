@@ -1,5 +1,25 @@
 {
   "suffix-adjective-to-token.label": "Suffix random adjective",
   "suffix-adjective-to-token.hintPrototype": "When enabled, newly placed tokens move Foundry's random adjective to the end of the name. Requires the core adjective option.",
-  "suffix-adjective-to-token.hintPlaced": "This flag is stored on the token, but it only affects newly created tokens that also use Foundry's core adjective option."
+  "suffix-adjective-to-token.hintPlaced": "This flag is stored on the token, but it only affects newly created tokens that also use Foundry's core adjective option.",
+  "TOKEN.Adjectives.onearmed": "One-Armed",
+  "TOKEN.Adjectives.onelegged": "One-Legged",
+  "TOKEN.Adjectives.twisted": "Twisted",
+  "TOKEN.Adjectives.oneeyed": "One-Eyed",
+  "TOKEN.Adjectives.crosseyed": "Cross-Eyed",
+  "TOKEN.Adjectives.scarred": "Scarred",
+  "TOKEN.Adjectives.stitched": "Stitched",
+  "TOKEN.Adjectives.limping": "Limping",
+  "TOKEN.Adjectives.hunched": "Hunched",
+  "TOKEN.Adjectives.scrawny": "Scrawny",
+  "TOKEN.Adjectives.puny": "Puny",
+  "TOKEN.Adjectives.mutilated": "Mutilated",
+  "TOKEN.Adjectives.gaunt": "Gaunt",
+  "TOKEN.Adjectives.hunchbacked": "Hunchbacked",
+  "TOKEN.Adjectives.toothless": "Toothless",
+  "TOKEN.Adjectives.bald": "Bald",
+  "TOKEN.Adjectives.shaggy": "Shaggy",
+  "TOKEN.Adjectives.tattooed": "Tattooed",
+  "TOKEN.Adjectives.pockmarked": "Pockmarked",
+  "TOKEN.Adjectives.bowlegged": "Bow-Legged"
 }

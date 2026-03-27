@@ -1,8 +1,8 @@
 {
   "id": "suffix-adjective-to-token",
   "title": "Suffix Adjective To Token",
-  "description": "Adds a Prototype Token option to move Foundry's random adjective from the front of a new token name to the end.",
-  "version": "0.2.0",
+  "description": "Moves Foundry's random token adjective from the front to the end and adds extra physical adjectives to the pool.",
+  "version": "0.3.0",
   "compatibility": {
     "minimum": "11",
     "verified": "13"
