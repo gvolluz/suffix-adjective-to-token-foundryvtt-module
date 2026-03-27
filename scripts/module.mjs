@@ -1,5 +1,95 @@
 const MODULE_ID = "suffix-adjective-to-token";
 const COUNT_SUFFIX_PATTERN = "(?:\\(\\d+\\)|#\\d+|\\d+)";
+const PHYSICAL_ADJECTIVES = {
+  en: {
+    onearmed: "One-Armed",
+    onelegged: "One-Legged",
+    twisted: "Twisted",
+    oneeyed: "One-Eyed",
+    crosseyed: "Cross-Eyed",
+    scarred: "Scarred",
+    stitched: "Stitched",
+    limping: "Limping",
+    hunched: "Hunched",
+    scrawny: "Scrawny",
+    puny: "Puny",
+    mutilated: "Mutilated",
+    gaunt: "Gaunt",
+    hunchbacked: "Hunchbacked",
+    toothless: "Toothless",
+    bald: "Bald",
+    shaggy: "Shaggy",
+    tattooed: "Tattooed",
+    pockmarked: "Pockmarked",
+    bowlegged: "Bow-Legged",
+    misshapen: "Misshapen",
+    deformed: "Deformed",
+    hobbled: "Hobbled",
+    shriveled: "Shriveled",
+    potbellied: "Potbellied",
+    skinny: "Skinny",
+    pitted: "Pitted",
+    gangly: "Gangly",
+    knotty: "Knotty",
+    stubby: "Stubby",
+    stocky: "Stocky",
+    bony: "Bony",
+    frail: "Frail",
+    burned: "Burned",
+    disfigured: "Disfigured",
+    scratched: "Scratched",
+    flayed: "Flayed",
+    hairy: "Hairy",
+    crooked: "Crooked",
+    swollen: "Swollen"
+  },
+  fr: {
+    onearmed: "manchot",
+    onelegged: "unijambiste",
+    twisted: "tordu",
+    oneeyed: "borgne",
+    crosseyed: "bigleux",
+    scarred: "balafré",
+    stitched: "recousu",
+    limping: "boiteux",
+    hunched: "voûté",
+    scrawny: "rachitique",
+    puny: "malingre",
+    mutilated: "mutilé",
+    gaunt: "décharné",
+    hunchbacked: "bossu",
+    toothless: "édenté",
+    bald: "chauve",
+    shaggy: "hirsute",
+    tattooed: "tatoué",
+    pockmarked: "pustuleux",
+    bowlegged: "cagneux",
+    misshapen: "contrefait",
+    deformed: "difforme",
+    hobbled: "estropié",
+    shriveled: "rabougri",
+    potbellied: "bedonnant",
+    skinny: "maigrichon",
+    pitted: "grêlé",
+    gangly: "dégingandé",
+    knotty: "noueux",
+    stubby: "courtaud",
+    stocky: "trapu",
+    bony: "osseux",
+    frail: "chétif",
+    burned: "brûlé",
+    disfigured: "défiguré",
+    scratched: "griffé",
+    flayed: "écorché",
+    hairy: "velu",
+    crooked: "bancal",
+    swollen: "boursouflé"
+  }
+};
+
+Hooks.once("setup", () => {
+  replaceCoreAdjectives();
+});
 
 Hooks.on("preCreateDocument", (document, data, options, userId) => {
   if (document?.documentName !== "Token") return;
@@ -28,6 +118,26 @@ function applyRename(tokenDocument, { persisted = false } = {}) {
 
   if (persisted) return tokenDocument.update({ name: renamed });
   tokenDocument.updateSource({ name: renamed });
+}
+
+function replaceCoreAdjectives() {
+  const translations = getLanguageAdjectives(game.i18n?.lang);
+  if (!translations) return;
+
+  if (game.i18n.translations?.TOKEN) {
+    game.i18n.translations.TOKEN.Adjectives = { ...translations };
+  }
+
+  if (game.i18n._fallback?.TOKEN) {
+    game.i18n._fallback.TOKEN.Adjectives = { ...translations };
+  }
+}
+
+function getLanguageAdjectives(language) {
+  if (language && PHYSICAL_ADJECTIVES[language]) return PHYSICAL_ADJECTIVES[language];
+  const baseLanguage = typeof language === "string" ? language.split("-")[0] : null;
+  if (baseLanguage && PHYSICAL_ADJECTIVES[baseLanguage]) return PHYSICAL_ADJECTIVES[baseLanguage];
+  return PHYSICAL_ADJECTIVES.en;
 }
 
 function getSuffixedName(tokenDocument) {
